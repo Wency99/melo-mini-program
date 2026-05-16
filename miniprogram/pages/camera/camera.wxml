@@ -51,19 +51,19 @@
 
   <cover-view class="controls">
     <cover-view class="btn-nav btn-space {{activeControl === 'space' ? 'control-active' : ''}}" bindtouchstart="pressControl" bindtouchend="releaseControl" bindtap="goToSpace" data-key="space">
-      <cover-image class="nav-icon space-icon" src="/images/space-icon.svg"></cover-image>
+      <cover-image class="nav-icon space-icon" src="/images/space-icon.png"></cover-image>
     </cover-view>
     <cover-view class="btn-capture {{canParticipate ? '' : 'is-disabled'}} {{activeControl === 'capture' ? 'control-active' : ''}}" bindtouchstart="pressControl" bindtouchend="releaseControl" bindtap="capturePhoto" data-key="capture">
       <cover-view class="capture-ring"><cover-view class="capture-inner"></cover-view></cover-view>
     </cover-view>
     <cover-view class="btn-nav btn-profile {{activeControl === 'profile' ? 'control-active' : ''}}" bindtouchstart="pressControl" bindtouchend="releaseControl" bindtap="goToProfile" data-key="profile">
-      <cover-image class="nav-icon profile-icon" src="/images/profile-icon.svg"></cover-image>
+      <cover-image class="nav-icon profile-icon" src="/images/profile-icon.png"></cover-image>
     </cover-view>
   </cover-view>
 
   <cover-view class="btn-switch-wrapper {{activeControl === 'switch' ? 'control-active' : ''}}" bindtouchstart="pressControl" bindtouchend="releaseControl" bindtap="switchCamera" catchtouchend="switchCamera" data-key="switch">
     <cover-view class="btn-nav btn-switch {{switchingCamera || !canParticipate ? 'is-disabled' : ''}}">
-      <cover-image class="switch-icon" src="/images/camera-switch.svg"></cover-image>
+      <cover-image class="switch-icon" src="/images/camera-switch.png"></cover-image>
     </cover-view>
   </cover-view>
 </view>

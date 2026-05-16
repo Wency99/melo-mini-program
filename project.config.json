@@ -4,7 +4,7 @@
   "description": "Melo - Long Distance Photo Sync",
   "appid": "wx222a8a94756b7b1f",
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": true,
     "enhance": true,
     "postcss": true,
