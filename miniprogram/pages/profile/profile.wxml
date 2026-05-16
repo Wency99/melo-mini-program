@@ -1,0 +1,56 @@
+<view class="container">
+  <view class="melo-navbar melo-navbar-light" style="{{nav.navbarStyle}}">
+    <view class="melo-navbar-back profile-navbar-back" style="{{nav.backStyle}}" bindtap="goBack"><view class="melo-navbar-back-icon"></view></view>
+    <text class="melo-navbar-title" style="{{nav.titleStyle}}">我的</text>
+  </view>
+  <view class="melo-navbar-placeholder" style="{{nav.placeholderStyle}}"></view>
+
+  <view class="user-section">
+    <view class="user-avatar">
+      <image wx:if="{{currentAvatarUrl}}" class="user-avatar-image" src="{{currentAvatarUrl}}" mode="aspectFit" />
+      <text wx:else class="avatar-text">{{avatarLetter}}</text>
+    </view>
+    <view wx:if="{{!editingUsername}}" class="username-display">
+      <text class="user-name">{{userInfo.displayName || '未登录'}}</text>
+      <view class="btn-edit-name" hover-class="btn-pressed" bindtap="startEditUsername">编辑</view>
+    </view>
+    <view wx:else class="username-editor">
+      <input class="username-input" type="text" maxlength="20" value="{{usernameDraft}}" bindinput="onUsernameDraftInput" />
+      <view class="btn-name-save" hover-class="btn-pressed" bindtap="saveUsername">保存</view>
+      <view class="btn-name-cancel" hover-class="btn-pressed" bindtap="cancelEditUsername">取消</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header"><text class="section-title">我的群组</text></view>
+    <view class="group-list">
+      <view class="group-item {{item.id === currentGroupId ? 'active' : ''}}" hover-class="group-item-pressed" wx:for="{{groups}}" wx:key="id" bindtap="selectGroup" data-id="{{item.id}}">
+        <view wx:if="{{groups.length > 1}}" class="group-radio {{item.id === currentGroupId ? 'checked' : ''}}">
+          <view class="radio-dot"></view>
+        </view>
+        <view class="group-info">
+          <text class="group-name">{{item.name}}</text>
+          <view class="group-members">
+            <view class="member-chip" wx:for="{{item.displayMembers}}" wx:for-item="member" wx:key="uid">
+              <view class="member-avatar">
+                <image wx:if="{{member.avatarUrl}}" class="member-avatar-image" src="{{member.avatarUrl}}" mode="aspectFit" />
+                <text wx:else class="member-avatar-text">{{member.avatarLetter}}</text>
+              </view>
+              <text class="member-name">{{member.displayName}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="group-code">
+          <text class="code-text" catchtap="copyCode" data-code="{{item.inviteCode}}">{{item.inviteCode}}</text>
+          <view class="copy-btn" hover-class="btn-pressed" catchtap="copyCode" data-code="{{item.inviteCode}}">复制</view>
+          <view class="manage-btn" hover-class="btn-pressed" catchtap="goToGroupManage" data-id="{{item.id}}">{{item.role === 'creator' ? '管理' : '退出'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="action-item" hover-class="btn-pressed" bindtap="showAddGroup"><text class="action-text">加入/创建群组</text><image class="action-arrow-icon" src="/images/chevron-right.svg" mode="aspectFit" /></view>
+    <view class="action-item danger" hover-class="btn-pressed" bindtap="handleLogout"><text class="action-text">退出登录</text><image class="action-arrow-icon" src="/images/chevron-right.svg" mode="aspectFit" /></view>
+  </view>
+</view>

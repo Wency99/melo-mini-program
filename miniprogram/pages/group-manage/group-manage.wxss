@@ -1,0 +1,169 @@
+.container {
+  min-height: 100vh;
+  background: var(--melo-bg-page);
+  padding: 150rpx 32rpx 48rpx;
+  box-sizing: border-box;
+}
+
+.group-manage-navbar-back {
+  transform: translateY(10rpx);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 28rpx;
+}
+
+.group-head,
+.section,
+.danger-zone {
+  background: var(--melo-bg-surface, #FFFFFF);
+  border-radius: var(--melo-radius-md, 20rpx);
+  box-shadow: var(--melo-shadow-card, 0 4rpx 20rpx rgba(0,0,0,0.03));
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.group-name {
+  display: block;
+  font-size: 40rpx;
+  line-height: 52rpx;
+  font-weight: 700;
+  color: var(--melo-text-primary, #3F3F3F);
+}
+
+.invite-row {
+  display: flex;
+  align-items: center;
+  margin-top: 18rpx;
+}
+
+.invite-label {
+  font-size: 24rpx;
+  color: var(--melo-text-secondary, #787878);
+  margin-right: 16rpx;
+}
+
+.invite-code {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--melo-brand, #F8E482);
+  letter-spacing: 4rpx;
+  font-family: monospace;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--melo-text-primary, #3F3F3F);
+}
+
+.section-count {
+  font-size: 24rpx;
+  color: var(--melo-text-secondary, #787878);
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.member-item {
+  min-height: 96rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid var(--melo-border, rgba(0,0,0,0.05));
+}
+
+.member-item:last-child {
+  border-bottom: 0;
+}
+
+.member-avatar {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: var(--melo-radius-full, 50%);
+  background: var(--melo-brand, #F8E482);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.member-avatar-image {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-letter {
+  font-size: 24rpx;
+  font-weight: 700;
+  color: var(--melo-text-primary, #3F3F3F);
+}
+
+.member-info {
+  flex: 1;
+  min-width: 0;
+  margin-left: 18rpx;
+}
+
+.member-name {
+  display: block;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color: var(--melo-text-primary, #3F3F3F);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.member-role {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  line-height: 28rpx;
+  color: var(--melo-text-secondary, #787878);
+}
+
+.btn-remove {
+  height: 52rpx;
+  line-height: 52rpx;
+  padding: 0 18rpx;
+  border-radius: var(--melo-radius-md, 20rpx);
+  background: rgba(255, 153, 153, 0.16);
+  color: var(--melo-danger, #FF9999);
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.btn-delete-group {
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: var(--melo-radius-md, 20rpx);
+  background: var(--melo-danger, #FF9999);
+  color: #FFFFFF;
+  font-size: 28rpx;
+  font-weight: 700;
+  text-align: center;
+}
+
+.empty {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: var(--melo-text-secondary, #787878);
+}

@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="melo-navbar melo-navbar-light" style="{{nav.navbarStyle}}">
+    <view class="melo-navbar-back group-manage-navbar-back" style="{{nav.backStyle}}" bindtap="goBack"><view class="melo-navbar-back-icon"></view></view>
+    <text class="melo-navbar-title" style="{{nav.titleStyle}}">群组管理</text>
+  </view>
+
+  <view class="content" wx:if="{{group}}">
+    <view class="group-head">
+      <text class="group-name">{{group.name}}</text>
+      <view class="invite-row">
+        <text class="invite-label">邀请码</text>
+        <text class="invite-code">{{group.inviteCode}}</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">成员</text>
+        <text class="section-count">{{members.length}}/4</text>
+      </view>
+      <view class="member-list">
+        <view class="member-item" wx:for="{{members}}" wx:key="uid">
+          <view class="member-avatar">
+            <image wx:if="{{item.avatarUrl}}" class="member-avatar-image" src="{{item.avatarUrl}}" mode="aspectFit" />
+            <text wx:else class="avatar-letter">{{item.avatarLetter}}</text>
+          </view>
+          <view class="member-info">
+            <text class="member-name">{{item.displayName}}</text>
+            <text class="member-role">{{item.uid === currentUserId ? '我' : '成员'}}</text>
+          </view>
+          <view wx:if="{{group.role === 'creator' && item.uid !== currentUserId}}" class="btn-remove" hover-class="btn-pressed" bindtap="removeMember" data-id="{{item.uid}}" data-name="{{item.displayName}}">删除</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="danger-zone">
+      <view wx:if="{{group.role === 'creator'}}" class="btn-delete-group" hover-class="btn-pressed" bindtap="deleteGroup">解散群组</view>
+      <view wx:else class="btn-delete-group" hover-class="btn-pressed" bindtap="leaveGroup">退出群组</view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <text class="empty-text">群组不存在</text>
+  </view>
+</view>

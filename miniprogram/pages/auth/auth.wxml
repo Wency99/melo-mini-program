@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="center-group">
+    <view class="logo-section">
+      <view class="logo-circle">
+        <image class="logo-image" src="/images/logo.png" mode="aspectFit" />
+      </view>
+      <text class="app-slogan">Stay in the same melody</text>
+      <text class="app-slogan-sub">一起拍下，不在一起的时刻</text>
+    </view>
+
+    <view class="login-section">
+      <view class="btn-wechat" hover-class="btn-pressed" bindtap="handleWechatLogin">
+        <text>微信一键登录</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="terms">
+    <text>登录即表示同意</text>
+    <text class="link">《用户协议》</text>
+    <text>和</text>
+    <text class="link">《隐私政策》</text>
+  </view>
+</view>

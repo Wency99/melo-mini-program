@@ -1,0 +1,69 @@
+<view class="container">
+  <view class="camera-frame {{canParticipate ? '' : 'is-dim'}}" style="height: {{frameHeight}}px; top: {{frameTop}}px;">
+    <camera
+      wx:if="{{cameraVisible && cameraPosition === 'back'}}"
+      id="camera-back"
+      device-position="back"
+      flash="off"
+      resolution="medium"
+      class="camera"
+      bindinitdone="onCameraInit"
+      binderror="onCameraError"
+    />
+    <camera
+      wx:if="{{cameraVisible && cameraPosition === 'front'}}"
+      id="camera-front"
+      device-position="front"
+      flash="off"
+      resolution="medium"
+      class="camera"
+      bindinitdone="onCameraInit"
+      binderror="onCameraError"
+    />
+    <cover-view class="frame-border">
+      <cover-view class="corner corner-tl">
+        <cover-view class="corner-line corner-h"></cover-view>
+        <cover-view class="corner-line corner-v"></cover-view>
+      </cover-view>
+      <cover-view class="corner corner-tr">
+        <cover-view class="corner-line corner-h"></cover-view>
+        <cover-view class="corner-line corner-v"></cover-view>
+      </cover-view>
+      <cover-view class="corner corner-bl">
+        <cover-view class="corner-line corner-h"></cover-view>
+        <cover-view class="corner-line corner-v"></cover-view>
+      </cover-view>
+      <cover-view class="corner corner-br">
+        <cover-view class="corner-line corner-h"></cover-view>
+        <cover-view class="corner-line corner-v"></cover-view>
+      </cover-view>
+    </cover-view>
+    <cover-view wx:if="{{!canParticipate}}" class="state-panel">
+      <cover-view class="state-title">{{statusTitle}}</cover-view>
+      <cover-view class="state-hint">{{statusHint}}</cover-view>
+    </cover-view>
+  </view>
+
+  <cover-view class="hud-top">
+    <cover-view class="time">{{currentTime}}</cover-view>
+    <cover-view class="city">📍 {{city}}</cover-view>
+  </cover-view>
+
+  <cover-view class="controls">
+    <cover-view class="btn-nav btn-space {{activeControl === 'space' ? 'control-active' : ''}}" bindtouchstart="pressControl" bindtouchend="releaseControl" bindtap="goToSpace" data-key="space">
+      <cover-image class="nav-icon space-icon" src="/images/space-icon.svg"></cover-image>
+    </cover-view>
+    <cover-view class="btn-capture {{canParticipate ? '' : 'is-disabled'}} {{activeControl === 'capture' ? 'control-active' : ''}}" bindtouchstart="pressControl" bindtouchend="releaseControl" bindtap="capturePhoto" data-key="capture">
+      <cover-view class="capture-ring"><cover-view class="capture-inner"></cover-view></cover-view>
+    </cover-view>
+    <cover-view class="btn-nav btn-profile {{activeControl === 'profile' ? 'control-active' : ''}}" bindtouchstart="pressControl" bindtouchend="releaseControl" bindtap="goToProfile" data-key="profile">
+      <cover-image class="nav-icon profile-icon" src="/images/profile-icon.svg"></cover-image>
+    </cover-view>
+  </cover-view>
+
+  <cover-view class="btn-switch-wrapper {{activeControl === 'switch' ? 'control-active' : ''}}" bindtouchstart="pressControl" bindtouchend="releaseControl" bindtap="switchCamera" catchtouchend="switchCamera" data-key="switch">
+    <cover-view class="btn-nav btn-switch {{switchingCamera || !canParticipate ? 'is-disabled' : ''}}">
+      <cover-image class="switch-icon" src="/images/camera-switch.svg"></cover-image>
+    </cover-view>
+  </cover-view>
+</view>

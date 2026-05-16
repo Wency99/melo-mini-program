@@ -1,0 +1,150 @@
+/* ============================================
+   Melo Design Tokens
+   ============================================ */
+
+page {
+  /* Color Palette */
+  --melo-bg-page:         #FDFDF7;
+  --melo-bg-surface:      #FFFFFF;
+  --melo-bg-dark:         #000000;
+
+  --melo-brand:           #F8E482;
+  --melo-brand-soft:      rgba(248, 228, 130, 0.45);
+  --melo-brand-subtle:    rgba(248, 228, 130, 0.08);
+
+  --melo-text-primary:    #3F3F3F;
+  --melo-text-secondary:  #787878;
+  --melo-text-muted:      #A8A8A8;
+  --melo-text-inverse:    #FFFFFF;
+
+  --melo-danger:          #FF9999;
+
+  --melo-border:          rgba(0, 0, 0, 0.05);
+  --melo-divider:         #DADADA;
+
+  /* Overlay / Dark helpers */
+  --melo-overlay-mask:    rgba(0, 0, 0, 0.6);
+  --melo-overlay-heavy:   rgba(0, 0, 0, 0.8);
+  --melo-white-10:        rgba(255, 255, 255, 0.10);
+  --melo-white-15:        rgba(255, 255, 255, 0.15);
+  --melo-white-20:        rgba(255, 255, 255, 0.20);
+  --melo-white-40:        rgba(255, 255, 255, 0.40);
+  --melo-white-50:        rgba(255, 255, 255, 0.50);
+  --melo-white-90:        rgba(255, 255, 255, 0.90);
+
+  /* Radius */
+  --melo-radius-sm:       12rpx;
+  --melo-radius-md:       20rpx;
+  --melo-radius-lg:       28rpx;
+  --melo-radius-xl:       48rpx;
+  --melo-radius-full:     50%;
+
+  /* Shadows (light) */
+  --melo-shadow-card:     0 4rpx 20rpx rgba(0, 0, 0, 0.03);
+  --melo-shadow-elevated: 0 8rpx 30rpx rgba(0, 0, 0, 0.06);
+  --melo-shadow-modal:    0 20rpx 60rpx rgba(0, 0, 0, 0.15);
+
+  /* Brand glows */
+  --melo-glow-soft:       0 4rpx 15rpx rgba(248, 228, 130, 0.25);
+  --melo-glow-medium:     0 8rpx 30rpx rgba(248, 228, 130, 0.30);
+  --melo-glow-strong:     0 8rpx 40rpx rgba(248, 228, 130, 0.35);
+
+  /* Typography */
+  --melo-font-family:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing */
+  --melo-space-xs:        8rpx;
+  --melo-space-sm:        16rpx;
+  --melo-space-md:        24rpx;
+  --melo-space-lg:        40rpx;
+  --melo-space-xl:        60rpx;
+
+  /* Input / Button Heights */
+  --melo-input-height:    96rpx;
+  --melo-input-height-sm: 72rpx;
+  --melo-btn-height:      96rpx;
+  --melo-btn-height-sm:   64rpx;
+
+  /* Transitions */
+  --melo-transition:      0.2s ease;
+
+  /* Base */
+  background: var(--melo-bg-page);
+  color: var(--melo-text-primary);
+  font-family: var(--melo-font-family);
+}
+
+/* Global utility */
+.container {
+  min-height: 100vh;
+  background: var(--melo-bg-page);
+}
+
+.melo-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 96rpx;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+}
+
+.melo-navbar-light {
+  color: var(--melo-text-primary);
+  background: var(--melo-bg-page);
+}
+
+.melo-navbar-dark {
+  color: #FFFFFF;
+  background: transparent;
+}
+
+.melo-navbar-back {
+  position: absolute;
+  left: 28rpx;
+  width: 60rpx;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.melo-navbar-back-icon {
+  width: 22rpx;
+  height: 22rpx;
+  border-left: 5rpx solid currentColor;
+  border-bottom: 5rpx solid currentColor;
+  transform: rotate(45deg);
+}
+
+.melo-navbar-title {
+  position: absolute;
+  left: 120rpx;
+  right: 120rpx;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.melo-navbar-placeholder {
+  height: calc(96rpx + env(safe-area-inset-top));
+}
+
+/* Shared spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Shared press state */
+.btn-pressed {
+  opacity: 0.75;
+  transform: scale(0.97);
+}
+
+.btn-link-pressed {
+  opacity: 0.55;
+}

@@ -1,0 +1,88 @@
+.container {
+  min-height: 100vh;
+  background: var(--melo-bg-page);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--melo-space-xl);
+  position: relative;
+}
+
+.center-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80rpx;
+  margin-top: -200rpx;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-circle {
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: var(--melo-radius-full);
+  background: var(--melo-bg-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--melo-shadow-elevated);
+}
+
+.logo-image {
+  width: 100%;
+  height: 100%;
+}
+
+.app-slogan {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--melo-text-primary);
+  margin-top: 32rpx;
+}
+
+.app-slogan-sub {
+  font-size: 26rpx;
+  color: var(--melo-text-secondary);
+  margin-top: 12rpx;
+}
+
+.login-section {
+  width: 100%;
+  max-width: 500rpx;
+}
+
+.btn-wechat {
+  width: 100%;
+  height: var(--melo-btn-height);
+  background: var(--melo-brand);
+  color: var(--melo-text-primary);
+  border-radius: var(--melo-radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 600;
+  box-shadow: var(--melo-glow-medium);
+  transition: all var(--melo-transition);
+}
+
+.terms {
+  position: absolute;
+  bottom: 60rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 24rpx;
+  color: var(--melo-text-secondary);
+}
+
+.terms .link {
+  color: var(--melo-brand);
+}

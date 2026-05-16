@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="header">
+    <text class="eyebrow">Melo together</text>
+    <text class="title">先取一个名字</text>
+    
+  </view>
+
+  <view class="setup-block">
+    <view class="field-head">
+      <text class="section-label">用户名</text>
+      <text class="save-state {{usernameSaved ? 'saved' : ''}}">{{usernameSaved ? '已保存' : '待保存'}}</text>
+    </view>
+    <input class="username-input" type="text" maxlength="20" placeholder="取个名字吧" value="{{username}}" bindinput="onUsernameInput" />
+    <view class="btn-save-name {{savingUsername ? 'is-loading' : ''}}" hover-class="btn-pressed" bindtap="saveUsername">
+      {{savingUsername ? '保存中' : '下一步'}}
+    </view>
+  </view>
+</view>

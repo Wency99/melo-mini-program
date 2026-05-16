@@ -1,0 +1,5 @@
+{
+  "desc": "关于本项目及其功能的协议",
+  "setting": { "urlCheck": false },
+  "rules": [{ "action": "allow", "page": "*" }]
+}

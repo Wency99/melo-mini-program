@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="melo-navbar melo-navbar-dark" style="{{nav.navbarStyle}}">
+    <view class="melo-navbar-back" style="{{nav.backStyle}}" bindtap="onCancel"><view class="melo-navbar-back-icon"></view></view>
+  </view>
+
+  <view class="preview" style="height: {{frameHeight}}px; top: {{frameTop}}px;">
+    <image src="{{photo}}" mode="aspectFill" class="photo" />
+    <view class="hud-top">
+      <text class="time">{{hourMark}}</text>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="tag-location-time">📍 {{city}}｜{{time}}</view>
+    <view class="input-box">
+      <textarea class="caption-input" placeholder="写点什么..." maxlength="200" value="{{caption}}" bindinput="onCaptionInput" />
+      <view class="btn-send" hover-class="btn-pressed" bindtap="handlePublish">
+        <view class="send-circle"><text class="send-symbol">➤</text></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading-mask" wx:if="{{publishing}}">
+    <view class="loading-content">
+      <image class="loading-animation" src="/images/loading.gif" mode="aspectFit" />
+      <text class="loading-text">Loading...</text>
+    </view>
+  </view>
+</view>

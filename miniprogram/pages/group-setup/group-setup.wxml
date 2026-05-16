@@ -1,0 +1,49 @@
+<view class="container">
+  <view class="header">
+    <text class="eyebrow">Melo together</text>
+    <text class="title">加入一个群组</text>
+    <text class="subtitle">用邀请码加入朋友，或创建一个新的群组。</text>
+  </view>
+
+  <view class="tab">
+    <view class="tab-item {{tab === 'join' ? 'active' : ''}}" bindtap="switchTab" data-tab="join">加入群组</view>
+    <view class="tab-item {{tab === 'create' ? 'active' : ''}}" bindtap="switchTab" data-tab="create">创建群组</view>
+  </view>
+
+  <view class="action-block" wx:if="{{tab === 'join'}}">
+    <view class="field-head">
+      <text class="section-label">邀请码</text>
+      <text class="field-hint">6 位数字</text>
+    </view>
+    <input class="code-input" type="number" maxlength="6" placeholder="000000" value="{{inviteCode}}" bindinput="onCodeInput" />
+    <view class="btn-primary {{loading ? 'is-loading' : ''}}" hover-class="btn-pressed" bindtap="handleJoin">{{loading ? '加入中' : '加入群组'}}</view>
+  </view>
+
+  <view class="action-block" wx:if="{{tab === 'create'}}">
+    <view class="field-head">
+      <text class="section-label">群组名称</text>
+      <text class="field-hint">最多 4 人</text>
+    </view>
+    <input class="name-input" type="text" placeholder="给群组起个名字" value="{{groupName}}" bindinput="onNameInput" />
+    <view class="btn-primary {{loading ? 'is-loading' : ''}}" hover-class="btn-pressed" bindtap="handleCreate">{{loading ? '创建中' : '创建群组'}}</view>
+  </view>
+
+  <view class="modal" wx:if="{{showCodeModal}}">
+    <view class="modal-content">
+      <text class="modal-title">邀请码</text>
+      <text class="modal-code">{{createdCode}}</text>
+      <text class="modal-hint">复制邀请码分享给 TA</text>
+      <view class="member-list">
+        <view class="member-item" wx:for="{{members}}" wx:key="uid">
+          <view class="member-avatar">
+            <image wx:if="{{item.avatarUrl || item.avatar_url || item.photoUrl}}" class="member-avatar-image" src="{{item.avatarUrl || item.avatar_url || item.photoUrl}}" mode="aspectFit" />
+            <text wx:else class="avatar-letter">{{item.displayName ? item.displayName[0].toUpperCase() : '?'}}</text>
+          </view>
+          <text class="member-name">{{item.displayName}}</text>
+        </view>
+      </view>
+      <view class="btn-copy" hover-class="btn-pressed" bindtap="copyCode">复制邀请码</view>
+      <view class="btn-skip" hover-class="btn-link-pressed" bindtap="goToMelo">进入Melo</view>
+    </view>
+  </view>
+</view>

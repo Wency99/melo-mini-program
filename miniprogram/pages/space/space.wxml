@@ -1,0 +1,85 @@
+<view class="container">
+  <view class="melo-navbar melo-navbar-dark" style="{{nav.navbarStyle}}">
+    <view class="melo-navbar-back" style="{{nav.backStyle}}" bindtap="goBack"><view class="melo-navbar-back-icon"></view></view>
+    <text class="melo-navbar-title" style="{{nav.titleStyle}}">时刻</text>
+  </view>
+
+  <view class="empty" wx:if="{{entries.length === 0 && !loading}}">
+    <text class="empty-text">还没有同步的时刻</text>
+    <text class="empty-hint">开始拍摄第一张照片吧</text>
+  </view>
+
+  <scroll-view
+    wx:if="{{entries.length > 0}}"
+    scroll-x
+    class="scroll-view"
+    scroll-with-animation
+    enhanced
+    show-scrollbar="false"
+    bindscroll="onScroll"
+    bindtouchstart="onTouchStart"
+    bindscrollend="snapToEntry"
+    bindtouchend="onTouchEnd"
+    paging-enabled="{{true}}"
+    scroll-left="{{scrollLeft}}"
+  >
+    <view class="page-item" id="entry-{{index}}" wx:for="{{entries}}" wx:key="entryKey">
+      <view class="hour-mark">
+        <text class="hour-date">{{item.dateLabel}}</text>
+        <text class="hour-text">{{item.hourMark}}</text>
+      </view>
+      <view class="photo-grid grid-{{item.memberCount}}">
+        <block wx:for="{{item.posts}}" wx:key="userId">
+          <view class="grid-cell" wx:if="{{item.posted}}">
+            <image src="{{item.displayImageUrl}}" mode="aspectFill" class="cell-image" />
+            <view class="cell-info">
+              <text class="cell-caption" wx:if="{{item.caption}}">{{item.caption}}</text>
+              <text class="cell-user">{{item.userName}}</text>
+              <view class="cell-meta">
+                <text wx:if="{{item.cityName}}">📍 {{item.cityName}}</text>
+                <text wx:if="{{item.cityName}}">｜</text>
+                <text>{{item.time}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="grid-cell cell-placeholder" wx:else>
+            <view class="placeholder-avatar">
+              <image wx:if="{{item.avatarUrl}}" class="placeholder-avatar-image" src="{{item.avatarUrl}}" mode="aspectFit" />
+              <text wx:else class="placeholder-avatar-text">{{item.avatarLetter}}</text>
+            </view>
+            <text class="placeholder-user">{{item.userName}}</text>
+            <text class="placeholder-hint">没发照片，在干嘛？</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </scroll-view>
+
+  <scroll-view class="time-picker" wx:if="{{entries.length > 1}}" scroll-x scroll-with-animation enhanced show-scrollbar="false" scroll-left="{{timelineScrollLeft}}">
+    <view class="time-dots">
+      <block wx:for="{{entries}}" wx:key="entryKey">
+        <view class="date-separator" wx:if="{{item.showDateSeparator}}">
+          <text class="separator-text">|</text>
+        </view>
+        <view id="time-dot-{{index}}" class="time-dot {{currentIndex === index ? 'active' : ''}}" hover-class="dot-pressed" bindtap="scrollToEntry" data-index="{{index}}">
+          <text class="dot-label">{{item.hourMark}}</text>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <view class="header-overlay" style="top: {{nav.downloadTop}};">
+    <view class="btn-download" hover-class="btn-pressed" bindtap="handleDownload"><image src="/images/download-icon.svg" class="download-icon" mode="aspectFit" /></view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <image class="loading-animation" src="/images/loading.gif" mode="aspectFit" />
+    <text class="loading-text">Loading...</text>
+  </view>
+
+  <canvas
+    type="2d"
+    id="downloadCanvas"
+    class="download-canvas"
+  ></canvas>
+</view>
