@@ -12,12 +12,14 @@
 
 .city-picker-panel {
   width: 100%;
+  max-width: 100%;
   height: 85vh;
   background: var(--melo-bg-page, #FDFDF7);
   border-radius: 32rpx 32rpx 0 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-sizing: border-box;
   animation: slideUp 0.25s ease;
 }
 
@@ -87,7 +89,9 @@
 .picker-body {
   flex: 1;
   height: 0;
+  width: 100%;
   padding: 0 40rpx 40rpx;
+  box-sizing: border-box;
 }
 
 .section-label {
@@ -99,14 +103,20 @@
 }
 
 .city-list {
+  width: 100%;
   padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
 }
 
 .city-item {
   display: flex;
   align-items: center;
-  padding: 28rpx 0;
+  justify-content: center;
+  width: 100%;
+  min-height: 92rpx;
+  padding: 18rpx 0;
   border-bottom: 1rpx solid var(--melo-border, rgba(0,0,0,0.05));
+  box-sizing: border-box;
 }
 
 .city-item:active {
@@ -115,19 +125,26 @@
 
 .city-name {
   flex: 1;
+  min-width: 0;
   font-size: 30rpx;
   font-weight: 500;
+  line-height: 40rpx;
   color: var(--melo-text-primary, #3F3F3F);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-right: 16rpx;
+  margin-right: 24rpx;
 }
 
 .city-country {
+  max-width: 45%;
   flex-shrink: 0;
   font-size: 24rpx;
+  line-height: 34rpx;
+  text-align: right;
   color: var(--melo-text-muted, #A8A8A8);
+  white-space: normal;
+  word-break: break-word;
 }
 
 .empty-result {
