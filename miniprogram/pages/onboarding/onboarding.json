@@ -1,4 +1,7 @@
 {
+  "usingComponents": {
+    "city-picker": "/components/city-picker/city-picker"
+  },
   "navigationBarTitleText": "设置用户名",
   "navigationBarBackgroundColor": "#000000"
 }

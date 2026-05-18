@@ -21,7 +21,8 @@ Page({
     avatarLetter: '?',
     editingUsername: false,
     usernameDraft: '',
-    savingUsername: false
+    savingUsername: false,
+    showCityPicker: false
   },
 
   onLoad() {
@@ -127,6 +128,31 @@ Page({
       }
     }
     return first;
+  },
+
+  onOpenCityPicker() {
+    this.setData({ showCityPicker: true });
+  },
+
+  onCityPickerClose() {
+    this.setData({ showCityPicker: false });
+  },
+
+  async onCitySelect(e) {
+    const { city } = e.detail;
+    this.setData({ showCityPicker: false });
+
+    try {
+      let userInfo = this.data.userInfo || {};
+      const res = await api.updateUserProfile({ city: city.name });
+      userInfo = res.user || { ...userInfo, city: city.name };
+      wx.setStorageSync('userInfo', userInfo);
+      app.globalData.userInfo = userInfo;
+      this.setData({ userInfo });
+      wx.showToast({ title: '城市已更新', icon: 'success' });
+    } catch (err) {
+      wx.showToast({ title: '更新失败', icon: 'none' });
+    }
   },
 
   startEditUsername() {

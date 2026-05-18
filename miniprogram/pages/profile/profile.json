@@ -1,4 +1,7 @@
 {
+  "usingComponents": {
+    "city-picker": "/components/city-picker/city-picker"
+  },
   "navigationBarTitleText": "我的",
   "navigationBarBackgroundColor": "#FDFDF7",
   "navigationStyle": "custom"

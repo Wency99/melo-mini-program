@@ -19,6 +19,10 @@
       <view class="btn-name-save" hover-class="btn-pressed" bindtap="saveUsername">保存</view>
       <view class="btn-name-cancel" hover-class="btn-pressed" bindtap="cancelEditUsername">取消</view>
     </view>
+    <view class="city-display">
+      <text class="city-text">📍 {{userInfo.city || '未设置城市'}}</text>
+      <view class="btn-edit-city" hover-class="btn-pressed" bindtap="onOpenCityPicker">修改</view>
+    </view>
   </view>
 
   <view class="section">
@@ -53,4 +57,11 @@
     <view class="action-item" hover-class="btn-pressed" bindtap="showAddGroup"><text class="action-text">加入/创建群组</text><image class="action-arrow-icon" src="/images/chevron-right.svg" mode="aspectFit" /></view>
     <view class="action-item danger" hover-class="btn-pressed" bindtap="handleLogout"><text class="action-text">退出登录</text><image class="action-arrow-icon" src="/images/chevron-right.svg" mode="aspectFit" /></view>
   </view>
+
+  <city-picker
+    visible="{{showCityPicker}}"
+    currentCity="{{userInfo.city}}"
+    bind:select="onCitySelect"
+    bind:close="onCityPickerClose"
+  />
 </view>

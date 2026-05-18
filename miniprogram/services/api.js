@@ -58,6 +58,7 @@ module.exports = {
   wechatLogin: (code, profile = {}) => request({ url: '/auth/wechat', method: 'POST', data: { code, ...profile } }),
   getMe: () => request({ url: '/users/me' }),
   updateUserProfile: (data) => request({ url: '/users/me', method: 'PATCH', data }),
+  searchCities: (query) => request({ url: '/cities', method: 'GET', data: { q: query } }),
   getGroups: () => request({ url: '/groups' }),
   createGroup: (name) => request({ url: '/groups', method: 'POST', data: { name } }),
   joinGroup: (inviteCode) => request({ url: '/groups/join', method: 'POST', data: { inviteCode } }),

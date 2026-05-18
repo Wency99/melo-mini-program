@@ -1,5 +1,5 @@
 const api = require('../../services/api.js');
-const { getLocation, getHourMark } = require('../../utils/util.js');
+const { getHourMark } = require('../../utils/util.js');
 
 const spaceIcon = 'data:image/svg+xml;base64,PHN2ZyB0PSIxNzc4OTM4MzExODI3IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjEzMDM2IiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PHBhdGggZD0iTTUyNy41NTIgMjUyLjg5NmEyNzIgMjcyIDAgMSAwIDAgNTQ0IDI3MiAyNzIgMCAwIDAgMC01NDR6IG0tMzM2IDI3MmMwLTE4NS42IDE1MC40LTMzNiAzMzYtMzM2IDE4NS41NjggMCAzMzYgMTUwLjQgMzM2IDMzNiAwIDE4NS41NjgtMTUwLjQzMiAzMzYtMzM2IDMzNi0xODUuNiAwLTMzNi0xNTAuNDMyLTMzNi0zMzZ6IiBmaWxsPSIjZmZmZmZmIiBwLWlkPSIxMzAzNyI+PC9wYXRoPjxwYXRoIGQ9Ik01MjEuNTA0IDMxMS41ODRhMzIgMzIgMCAwIDEgMzYuODY0LTI2LjI0YzY2LjcyIDExLjIgMTIzLjUyIDQ2LjAxNiAxNjAuODY0IDkzLjkyYTMyIDMyIDAgMCAxLTUwLjQ2NCAzOS4zNmMtMjcuMzI4LTM1LjA0LTY5Ljc5Mi02MS42LTEyMC45Ni03MC4xNzZhMzIgMzIgMCAwIDEtMjYuMzA0LTM2Ljg2NHoiIGZpbGw9IiNmZmZmZmYiIHAtaWQ9IjEzMDM4Ij48L3BhdGg+PHBhdGggZD0iTTIzMS41ODQgNTIzLjIzMmEzMiAzMiAwIDAgMS0xLjA4OCA0NS4yNDhjLTM2LjM4NCAzNC42NTYtNjEuNzYgNjYuNC03NS40MjQgOTIuNDgtMTQuMzM2IDI3LjM5Mi0xMi4xMjggNDAuODMyLTkuMjQ4IDQ2LjAxNiAyLjUyOCA0LjUxMiAxMC40OTYgMTIuMDk2IDM0LjI0IDE1LjQ4OCAyMy4wNzIgMy4yNjQgNTUuMiAxLjUwNCA5NC45NzYtNi40IDc5LjItMTUuODA4IDE4MS40NC01NC41NiAyODcuMjMyLTExMy4yNDhhMzIgMzIgMCAwIDEgMzEuMDQgNTUuOTY4Yy0xMDkuOTIgNjAuOTkyLTIxOC40NjQgMTAyLjYyNC0zMDUuNzYgMTIwLTQzLjQ1NiA4LjY3Mi04My40NTYgMTEuNzEyLTExNi40OCA3LjA0LTMyLjQxNi00LjYwOC02NC41NDQtMTcuNzkyLTgxLjE4NC00Ny44MDgtMTguODgtMzMuOTUyLTkuMDU2LTczLjI0OCA4LjQ4LTEwNi43MiAxOC4xNzYtMzQuNzUyIDQ4Ljk2LTcyIDg4LTEwOS4xNTJhMzIgMzIgMCAwIDEgNDUuMjE2IDEuMDg4ek02ODAuNjQgMjc2Ljg5NmEzMiAzMiAwIDAgMSAyMy42MTYtMzguNjI0YzQ5LjQ0LTExLjg0IDk0Ljg4LTE3LjE4NCAxMzIuMDY0LTEzLjYzMiAzNi4wMzIgMy4zOTIgNzIuNTQ0IDE2LjEyOCA5MC43MiA0OC44OTYgMTMuMTUyIDIzLjcxMiAxMi4xOTIgNTAuMzA0IDQuODY0IDc0LjY4OC03LjMyOCAyNC4yODgtMjEuNzYgNDkuNDA4LTQwLjU0NCA3NC4yNC0zNy42OTYgNDkuODU2LTk3LjE4NCAxMDQuMjU2LTE3MC4zMDQgMTU2LjE2YTMyIDMyIDAgMSAxLTM3LjA4OC01Mi4xNmM3MC4wMTYtNDkuNzI4IDEyMy45MzYtOTkuNzQ0IDE1Ni4zMi0xNDIuNTkyIDE2LjI1Ni0yMS40NzIgMjYuMDE2LTM5Ljc0NCAzMC4zMzYtNTQuMTEyIDQuMjg4LTE0LjI3MiAyLjQzMi0yMS41NjggMC40NDgtMjUuMTg0LTIuNzUyLTQuOTYtMTIuMjU2LTEzLjUzNi00MC44LTE2LjIyNC0yNy4zOTItMi42MjQtNjUuMTUyIDEuMTItMTExLjA0IDEyLjE2YTMyIDMyIDAgMCAxLTM4LjU5Mi0yMy42MTZ6IiBmaWxsPSIjZmZmZmZmIiBwLWlkPSIxMzAzOSI+PC9wYXRoPjwvc3ZnPg==';
 const profileIcon = 'data:image/svg+xml;base64,PHN2ZyB0PSIxNzc4OTM4MjY3NjgwIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjEyMjk2IiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PHBhdGggZD0iTTYxNC40IDUzMi40OGMxODAuOTgxNzYgMCAzMjcuNjggMTQ2LjY5ODI0IDMyNy42OCAzMjcuNjh2MjAuNDhhODEuOTIgODEuOTIgMCAwIDEtODEuOTIgODEuOTJIMTYzLjg0YTgxLjkyIDgxLjkyIDAgMCAxLTgxLjkyLTgxLjkydi0yMC40OGMwLTE4MC45ODE3NiAxNDYuNjk4MjQtMzI3LjY4IDMyNy42OC0zMjcuNjhoMjA0Ljh6IG0wIDYxLjQ0SDQwOS42Yy0xNDQuOTM2OTYgMC0yNjIuODE5ODQgMTE1LjgxNDQtMjY2LjE1ODA4IDI1OS45NTI2NEwxNDMuMzYgODYwLjE2djIwLjQ4YTIwLjQ4IDIwLjQ4IDAgMCAwIDE4LjA4Mzg0IDIwLjMzNjY0TDE2My44NCA5MDEuMTJoNjk2LjMyYTIwLjQ4IDIwLjQ4IDAgMCAwIDIwLjMzNjY0LTE4LjA4Mzg0TDg4MC42NCA4ODAuNjR2LTIwLjQ4YzAtMTQ0LjkzNjk2LTExNS44MTQ0LTI2Mi44MTk4NC0yNTkuOTUyNjQtMjY2LjE1ODA4TDYxNC40IDU5My45MnpNNTEyIDYxLjQ0YzExMy4xMTEwNCAwIDIwNC44IDkxLjY4ODk2IDIwNC44IDIwNC44cy05MS42ODg5NiAyMDQuOC0yMDQuOCAyMDQuOC0yMDQuOC05MS42ODg5Ni0yMDQuOC0yMDQuOFMzOTguODg4OTYgNjEuNDQgNTEyIDYxLjQ0eiBtMCA2MS40NGExNDMuMzYgMTQzLjM2IDAgMSAwIDAgMjg2LjcyIDE0My4zNiAxNDMuMzYgMCAwIDAgMC0yODYuNzJ6IiBmaWxsPSIjZmZmZmZmIiBwLWlkPSIxMjI5NyI+PC9wYXRoPjwvc3ZnPg==';
@@ -11,7 +11,7 @@ Page({
     cameraVisible: true,
     switchingCamera: false,
     currentTime: '',
-    city: '定位中...',
+    city: '',
     activeControl: '',
     frameHeight: 320,
     frameTop: 160,
@@ -28,7 +28,7 @@ Page({
   onLoad() {
     this.updateTime();
     this.timer = setInterval(() => this.updateTime(), 1000);
-    this.initLocation();
+    this.setCityFromProfile();
     this.refreshCaptureState();
   },
 
@@ -209,31 +209,9 @@ Page({
     return { width: 0.5, height: 0.5 };
   },
 
-  async initLocation() {
-    const setting = await new Promise((resolve) => {
-      wx.getSetting({
-        success: (res) => resolve(res),
-        fail: () => resolve({ authSetting: {} })
-      });
-    });
-
-    if (!setting.authSetting['scope.userLocation']) {
-      const result = await new Promise((resolve) => {
-        wx.authorize({
-          scope: 'scope.userLocation',
-          success: () => resolve(true),
-          fail: () => resolve(false)
-        });
-      });
-
-      if (!result) {
-        wx.showToast({ title: '定位权限被拒绝', icon: 'none', duration: 2000 });
-        this.setData({ city: '未知位置' });
-        return;
-      }
-    }
-
-    const city = await getLocation();
+  setCityFromProfile() {
+    const userInfo = wx.getStorageSync('userInfo') || {};
+    const city = userInfo.city || '未设置城市';
     this.setData({ city });
   },
 

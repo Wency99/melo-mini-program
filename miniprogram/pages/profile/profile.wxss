@@ -58,6 +58,30 @@
   margin-bottom: 0;
 }
 
+.city-display {
+  display: flex;
+  align-items: center;
+  gap: var(--melo-space-sm, 16rpx);
+  margin-top: 12rpx;
+}
+
+.city-text {
+  font-size: 26rpx;
+  color: var(--melo-text-secondary, #787878);
+}
+
+.btn-edit-city {
+  margin: 0;
+  padding: 0 14rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  border-radius: var(--melo-radius-sm, 12rpx);
+  background: var(--melo-brand-soft, rgba(248,228,130,0.45));
+  color: var(--melo-text-primary, #3F3F3F);
+  font-size: 20rpx;
+  transition: all var(--melo-transition, 0.2s ease);
+}
+
 .btn-edit-name {
   margin: 0;
   padding: 0 18rpx;

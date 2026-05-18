@@ -2,7 +2,6 @@
   <view class="header">
     <text class="eyebrow">Melo together</text>
     <text class="title">先取一个名字</text>
-    
   </view>
 
   <view class="setup-block">
@@ -15,4 +14,22 @@
       {{savingUsername ? '保存中' : '下一步'}}
     </view>
   </view>
+
+  <view class="setup-block">
+    <view class="field-head">
+      <text class="section-label">城市</text>
+      <text class="save-state {{citySaved ? 'saved' : ''}}">{{citySaved ? '已保存' : '待保存'}}</text>
+    </view>
+    <view class="city-selector" bindtap="onOpenCityPicker" hover-class="btn-pressed">
+      <text class="city-placeholder {{city ? 'has-city' : ''}}">{{city || '📍 选择你所在的城市'}}</text>
+      <text class="city-arrow">›</text>
+    </view>
+  </view>
+
+  <city-picker
+    visible="{{showCityPicker}}"
+    currentCity="{{city}}"
+    bind:select="onCitySelect"
+    bind:close="onCityPickerClose"
+  />
 </view>

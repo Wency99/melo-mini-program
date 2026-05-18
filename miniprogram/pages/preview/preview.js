@@ -21,9 +21,12 @@ Page({
     const frameHeight = Number(decodeURIComponent(query.frameHeight || '')) || info.windowWidth;
     const frameTop = Number(decodeURIComponent(query.frameTop || '')) || Math.max(0, Math.round((info.windowHeight - frameHeight) / 2));
 
+    const userInfo = wx.getStorageSync('userInfo') || {};
+    const city = userInfo.city || decodeURIComponent(query.city || '') || '';
+
     this.setData({
       photo: decodeURIComponent(query.photo),
-      city: decodeURIComponent(query.city),
+      city,
       hourMark: getHourMark(),
       time: query.time ? decodeURIComponent(query.time) : getHourMark(),
       frameHeight,

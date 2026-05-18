@@ -244,6 +244,36 @@
   transition: all var(--melo-transition);
 }
 
+.city-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: var(--melo-input-height, 96rpx);
+  background: var(--melo-bg-surface);
+  border-radius: var(--melo-radius-md);
+  padding: 0 28rpx;
+  border: 1rpx solid var(--melo-border);
+  box-shadow: var(--melo-shadow-card);
+  box-sizing: border-box;
+}
+
+.city-placeholder {
+  font-size: 28rpx;
+  color: var(--melo-text-muted);
+}
+
+.city-placeholder.has-city {
+  font-size: 32rpx;
+  color: var(--melo-text-primary);
+}
+
+.city-arrow {
+  font-size: 36rpx;
+  color: var(--melo-text-muted);
+  font-weight: 300;
+}
+
 .btn-skip {
   background: transparent;
   color: var(--melo-text-secondary);

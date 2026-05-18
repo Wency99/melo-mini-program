@@ -1,0 +1,60 @@
+<view class="city-picker-mask" wx:if="{{visible}}" bindtap="onMaskTap">
+  <view class="city-picker-panel" catchtap="onContainerTap">
+    <view class="picker-header">
+      <text class="picker-title">选择城市</text>
+      <view class="picker-close" bindtap="onClose">
+        <text class="close-icon">✕</text>
+      </view>
+    </view>
+
+    <view class="search-bar">
+      <view class="search-input-wrapper">
+        <text class="search-icon">🔍</text>
+        <input
+          class="search-input"
+          type="text"
+          placeholder="搜索城市名称"
+          value="{{query}}"
+          bindinput="onInput"
+          focus="{{visible}}"
+          confirm-type="search"
+        />
+      </view>
+    </view>
+
+    <scroll-view scroll-y class="picker-body" enhanced show-scrollbar="{{false}}">
+      <!-- Search results -->
+      <view wx:if="{{query && cities.length > 0}}" class="city-list">
+        <view
+          class="city-item"
+          wx:for="{{cities}}"
+          wx:key="name"
+          bindtap="onSelectCity"
+          data-city="{{item}}"
+        >
+          <text class="city-name">{{item.name}}</text>
+          <text class="city-country">{{item.country}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{query && cities.length === 0 && !searching}}" class="empty-result">
+        <text class="empty-text">未找到匹配的城市</text>
+      </view>
+
+      <!-- Popular cities (when no query) -->
+      <view wx:if="{{!query}}" class="city-list">
+        <view class="section-label">热门城市</view>
+        <view
+          class="city-item"
+          wx:for="{{popularCities}}"
+          wx:key="name"
+          bindtap="onSelectCity"
+          data-city="{{item}}"
+        >
+          <text class="city-name">{{item.name}}</text>
+          <text class="city-country">{{item.country}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

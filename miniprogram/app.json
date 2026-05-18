@@ -16,12 +16,6 @@
     "navigationStyle": "custom",
     "backgroundColor": "#FDFDF7"
   },
-  "requiredPrivateInfos": ["getLocation"],
-  "permission": {
-    "scope.userLocation": {
-      "desc": "用于获取您所在位置，发布照片时添加位置标签"
-    }
-  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
